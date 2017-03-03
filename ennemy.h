@@ -3,24 +3,22 @@
 
 #include <QObject>
 #include <QPointer>
+#include <QGraphicsPixmapItem>
 class QGraphicsEllipseItem;
-class QGraphicsScene;
 class QTimer;
+class QGraphicsItem;
 
-class Ennemy : public QObject
+class Ennemy : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
-
 private:
     QGraphicsEllipseItem *m_pos;
-    int m_speed, m_hp, m_posx, m_posy, m_h, m_w;
+    int m_speed, m_hp, m_sceneWidth, m_sceneHeight;
     QPointer<QTimer> m_timer;
-    QGraphicsScene *m_scene;
     bool m_isNice;
     void init();
 public:
-    explicit Ennemy(QObject *parent = 0);
-    Ennemy(QGraphicsScene *scene);
+    explicit Ennemy(int _sceneWidth, int _sceneHeight, QGraphicsPixmapItem *parent = 0);
     ~Ennemy();
 
 signals:

@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/sprites">
+        <file>sprites/canon.png</file>
+        <file>sprites/ciel.jpg</file>
+        <file>sprites/elysee.png</file>
+        <file>sprites/fillon.png</file>
+        <file>sprites/juppe.png</file>
+        <file>sprites/balle.png</file>
+    </qresource>
+</RCC>
