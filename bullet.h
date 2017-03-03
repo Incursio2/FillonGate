@@ -4,16 +4,21 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItem>
 #include <QObject>
+#include <QTimer>
 
 class Bullet: public QObject,public QGraphicsPixmapItem
 {
     Q_OBJECT
     public:
         Bullet(QGraphicsItem * parent=0);
+        ~Bullet();
+        void start(int x, int y, float direction);
 
     private:
-        //QTimer timer;
-        void fire();
+        QTimer *timer;
+        float direction;
+        void handle();
+        void move();
 };
 
 #endif // BULLET_H

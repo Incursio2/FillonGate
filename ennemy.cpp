@@ -4,17 +4,20 @@
 #include <QTimer>
 #include <QDebug>
 #include <QGraphicsItem>
+#include <QPixmap>
+#include <QGraphicsScene>
 
-Ennemy::Ennemy(int _sceneWidth, int _sceneHeight,QGraphicsPixmapItem *parent):QGraphicsPixmapItem(parent)
+Ennemy::Ennemy(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
+  //  setPixmap(QPixmap(":/sprites/sprites/juppe.png"));
 //    m_sceneHeight = _sceneHeight;
 //    m_sceneWidth = _sceneWidth;
-//    init();
+    init();
 }
 void Ennemy::init()
 {
 
-    m_isNice = fmod(qrand(),100) > 75;
+    m_isNice = fmod(qrand(),100) > 90;
 
     if (m_isNice) {
         this->setPixmap(QPixmap(":/sprites/sprites/juppe.png"));
@@ -22,30 +25,33 @@ void Ennemy::init()
         this->setPixmap(QPixmap(":/sprites/sprites/fillon.png"));
     }
 
-    this->pos().setY(- this->pixmap().height());
     m_speed = fmod(qrand(),4);
-    this->pos().setX(fmod(qrand(), m_sceneWidth - this->pixmap().width()));
 
     m_timer = new QTimer();
 
     connect(m_timer, SIGNAL(timeout()), this, SLOT(move()));
     m_timer->start(10);
-    qDebug() << "testitude" << endl;
 
 }
+void Ennemy::setEnnemy()
+{
+    setPos(fmod(qrand(), scene()->width() - this->pixmap().width()),- this->pixmap().height());
+}
+
 void Ennemy::move()
 {
-    if (m_pos->y() > m_sceneHeight) {
+    if (this->pos().y() > scene()->height()) {
         delete this;
         return;
     }
-    m_pos->setPos(m_pos->x(),m_pos->y() + m_speed);
+    setPos(this->pos().x(),this->pos().y() + m_speed);
+    qDebug() << "pos";
 }
 
 Ennemy::~Ennemy()
 {
     delete m_timer;
     m_timer = nullptr;
-    delete m_pos;
-    m_pos = nullptr;
+//    delete m_pos;
+//    m_pos = nullptr;
 }

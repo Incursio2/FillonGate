@@ -14,6 +14,7 @@ public:
 
     QGraphicsScene * scene;
     QPointer<QTimer> m_timer;
+    int m_playerScore;
 
 public slots:
     void addEnnemy();
