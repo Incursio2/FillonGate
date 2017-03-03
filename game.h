@@ -12,6 +12,7 @@ public:
     Game(QWidget * parent=0);
 
     QGraphicsScene * scene;
+    int m_playerScore;
 };
 
 #endif // GAME_H

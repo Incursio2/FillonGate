@@ -3,20 +3,23 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QPointF>
+#include <QGraphicsScene>
 #include <QTimer>
 
 #include <QDebug>
 
-Canon::Canon(int sceneWidth, int sceneHeight, QGraphicsItem *parent)
+Canon::Canon(QGraphicsItem *parent) : QObject(), QGraphicsPixmapItem(parent)
 {
    setPixmap(QPixmap(":/sprites/sprites/canon.png"));
-
    m_canonOriginPoint = new QPointF(pixmap().size().width() / 2, pixmap().size().height());
-   setPos(sceneWidth / 2 - pixmap().size().width() / 2, sceneHeight - pixmap().size().height());
-
    m_timer = new QTimer(this);
    m_timer->start(500);
    Canon::Handle();
+}
+
+void Canon::SetPosition()
+{
+    setPos(scene()->width() / 2 - pixmap().size().width() / 2, scene()->height() - pixmap().size().height());
 }
 
 Canon::~Canon()
