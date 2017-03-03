@@ -15,11 +15,12 @@ Game::Game(QWidget *parent)
     setBackgroundBrush(QBrush(QImage(":/sprites/sprites/ciel.jpg")));
     setScene(scene);
 
-    QGraphicsTextItem *score = new QGraphicsTextItem();
-    score->setPlainText("Score : ");
-    score->setPos(10, 10);
+    txt_score = new QGraphicsTextItem();
+    txt_score->setPlainText("Score : ");
+    txt_score->setPos(10, 10);
+    score = 0;
 
-    scene->addItem(score);
+    scene->addItem(txt_score);
 
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -53,4 +54,12 @@ void Game::addEnnemy()
     ennemies->push_back(ennemy);
 }
 
+Game::~Game(){
+    delete txt_score;
+    txt_score = nullptr;
+    delete scene;
+    scene = nullptr;
+    delete ennemies;
+    ennemies = nullptr;
+}
 

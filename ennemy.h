@@ -13,12 +13,12 @@ class Ennemy : public QObject, public QGraphicsPixmapItem
 private:
     int m_speed, m_hp, m_sceneWidth, m_sceneHeight;
     QPointer<QTimer> m_timer;
-    bool m_isNice;
     void init();
 
 public:
     explicit Ennemy(QGraphicsItem *parent = 0);
     ~Ennemy();
+    bool isNice;
     void setEnnemy();
 
 public slots:

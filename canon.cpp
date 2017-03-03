@@ -18,7 +18,7 @@ Canon::Canon(QGraphicsItem *parent) : QObject(), QGraphicsPixmapItem(parent)
    setPixmap(QPixmap(":/sprites/sprites/canon.png"));
    m_canonOriginPoint = new QPointF(pixmap().size().width() / 2, pixmap().size().height());
    m_timer = new QTimer(this);
-   m_timer->start(500);
+   m_timer->start(800);
    Canon::Handle();
 }
 
@@ -44,9 +44,14 @@ void Canon::Handle()
 void Canon::Fire()
 {
     Bullet *balle = new Bullet();
-    qsrand(QTime::currentTime().msec());
-    int angle = rand() % 150 + 15; // Entre 15 et 149
-    balle->start(210,590,angle);
+
+    float angle = abs(rotation() - 90);
+    float rayon = pixmap().size().height();
+
+    float posX = rayon * qCos(angle * M_PI / 180) + scene()->width() / 2 - 13;
+    float posY = rayon * qSin(angle * M_PI / 180)+ scene()->height() - pixmap().size().height() * 2 - 25;
+
+    balle->start(posX, posY, angle);
     scene()->addItem(balle);
 }
 

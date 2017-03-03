@@ -18,9 +18,9 @@ Ennemy::Ennemy(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 void Ennemy::init()
 {
 
-    m_isNice = fmod(qrand(),100) > 90;
+    isNice = fmod(qrand(),100) > 90;
 
-    if (m_isNice) {
+    if (isNice) {
         this->setPixmap(QPixmap(":/sprites/sprites/juppe.png"));
     }else {
         this->setPixmap(QPixmap(":/sprites/sprites/fillon.png"));
@@ -43,6 +43,13 @@ void Ennemy::move()
 {
     if (this->pos().y() > scene()->height()) {
         game->ennemies->removeAt(game->ennemies->indexOf(this));
+        if(!this->isNice){
+            game->score--;
+        }
+        else{
+            game->score = game->score+5;
+        }
+        game->txt_score->setPlainText("Score:"+QString::number(game->score));
         delete this;
         return;
     }

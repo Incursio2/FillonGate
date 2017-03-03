@@ -30,11 +30,11 @@ void Bullet::start(int x, int y, float direction_){
 }
 
 void Bullet::handle(){
-    QObject::connect(timer,&QTimer::timeout,this,&Bullet::move);
+    QObject::connect(timer, &QTimer::timeout, this, &Bullet::move);
 }
 
 void Bullet::move(){
-    // Calculer la nouvelle position de la balle en fonction de la direction.
+    // Calculer la nouvelle position de la balle en fonction de la direction.    
     setPosAndRotation(10);
     if(!checkCollisions()){
         // Si la balle sort de l'écran on la détruit.
@@ -46,7 +46,7 @@ void Bullet::move(){
 }
 
 void Bullet::setPosAndRotation(int vitesse){
-    qreal posX = pos().x() - qCos(qDegreesToRadians(direction))*vitesse;
+    qreal posX = pos().x() + qCos(qDegreesToRadians(direction))*vitesse;
     qreal posY = pos().y() - qSin(qDegreesToRadians(direction))*vitesse;
 
     float radian = atan2(pos().y() - posY, pos().x() - posX);
@@ -62,7 +62,6 @@ bool Bullet::checkCollisions(){
     for(int e=0; e < items_collision.count();++e){
         if (typeid(*(items_collision.at(e))) == typeid(Ennemy)){
             qDebug() << "COLLISSION" << endl;
-
             scene()->removeItem(items_collision.at(e));
             delete items_collision[e];
 
