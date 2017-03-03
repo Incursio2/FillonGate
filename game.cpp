@@ -1,10 +1,11 @@
 #include "Game.h"
 #include "elysee.h"
-#include "ennemy.h"
 #include "canon.h"
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QTimer>
+#include <QList>
+
 #include <QDebug>
 
 Game::Game(QWidget *parent)
@@ -34,9 +35,8 @@ Game::Game(QWidget *parent)
 
     show();
 
-    Ennemy *ennemy = new Ennemy();
-    ennemy->setPos(30,50);
-    scene->addItem(ennemy);
+    ennemies = new QList<Ennemy*>();
+    addEnnemy();
 
     m_timer = new QTimer();
 
@@ -46,10 +46,11 @@ Game::Game(QWidget *parent)
 }
 
 void Game::addEnnemy()
-{
+{    
     Ennemy *ennemy = new Ennemy();
     scene->addItem(ennemy);
     ennemy->setEnnemy();
+    ennemies->push_back(ennemy);
 }
 
 

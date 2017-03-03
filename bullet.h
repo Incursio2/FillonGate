@@ -19,7 +19,7 @@ class Bullet: public QObject,public QGraphicsPixmapItem
         float direction;
         void setPosAndRotation(int vitesse);
         void handle();
-        void checkCollisions();
+        bool checkCollisions();
         void move();
 };
 

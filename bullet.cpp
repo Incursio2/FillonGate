@@ -36,11 +36,12 @@ void Bullet::handle(){
 void Bullet::move(){
     // Calculer la nouvelle position de la balle en fonction de la direction.
     setPosAndRotation(10);
-    checkCollisions();
-    // Si la balle sort de l'écran on la détruit.
-    if(!scene()->sceneRect().contains(QPoint(pos().x(),pos().y()+60))){
-        scene()->removeItem(this);
-        delete this;
+    if(!checkCollisions()){
+        // Si la balle sort de l'écran on la détruit.
+        if(!scene()->sceneRect().contains(QPoint(pos().x(),pos().y()+60))){
+            scene()->removeItem(this);
+            delete this;
+        }
     }
 }
 
@@ -55,13 +56,27 @@ void Bullet::setPosAndRotation(int vitesse){
     setPos(posX,posY-vitesse);
 }
 
-void Bullet::checkCollisions(){
-//    QList<QGraphicsItem> *ennemies = ennemies.getAll();
-//    for(int e=0; e<ennemies->count();++e){
+bool Bullet::checkCollisions(){
+//    qDebug() << "Nb ennemies" << game->ennemies->count();
+    QList<QGraphicsItem *> items_collision = collidingItems();
+    for(int e=0; e < items_collision.count();++e){
+        if (typeid(*(items_collision.at(e))) == typeid(Ennemy)){
+            qDebug() << "COLLISSION" << endl;
 
-//    }
+            scene()->removeItem(items_collision.at(e));
+            delete items_collision[e];
 
-//    game->repaint();
+            qDebug() << "COLLISSION 1" << endl;
+
+            scene()->removeItem(this); // On supprime la balle.
+            delete this;
+
+            qDebug() << "COLLISSION 2" << endl;
+
+            return true;
+        }
+    }
+    return false;
  }
 
 Bullet::~Bullet()

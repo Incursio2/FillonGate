@@ -1,11 +1,15 @@
 #include "ennemy.h"
 #include <QGraphicsEllipseItem>
 #include <qmath.h>
+#include <game.h>
 #include <QTimer>
 #include <QDebug>
 #include <QGraphicsItem>
 #include <QPixmap>
 #include <QGraphicsScene>
+#include <QDebug>
+
+extern Game *game;
 
 Ennemy::Ennemy(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
@@ -38,6 +42,7 @@ void Ennemy::setEnnemy()
 void Ennemy::move()
 {
     if (this->pos().y() > scene()->height()) {
+        game->ennemies->removeAt(game->ennemies->indexOf(this));
         delete this;
         return;
     }
