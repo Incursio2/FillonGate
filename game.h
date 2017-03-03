@@ -4,15 +4,20 @@
 #include <QGraphicsView>
 #include <QWidget>
 #include <QGraphicsScene>
+#include <QPointer>
 
 class Game: public QGraphicsView
 {
-
+    Q_OBJECT
 public:
     Game(QWidget * parent=0);
 
     QGraphicsScene * scene;
+    QPointer<QTimer> m_timer;
     int m_playerScore;
+
+public slots:
+    void addEnnemy();
 };
 
 #endif // GAME_H

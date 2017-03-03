@@ -6,5 +6,6 @@
         <file>sprites/fillon.png</file>
         <file>sprites/juppe.png</file>
         <file>sprites/balle.png</file>
+        <file>sprites/ciel_rouge.jpg</file>
     </qresource>
 </RCC>
