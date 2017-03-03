@@ -44,10 +44,14 @@ void Canon::Handle()
 void Canon::Fire()
 {
     Bullet *balle = new Bullet();
-    qsrand(QTime::currentTime().msec());
-    int angle = rand() % 150 + 15; // Entre 15 et 149
-    qDebug() << "Angle" << angle;
-    balle->start(210,590,angle);
+
+    float angle = abs(rotation() - 90);
+    float rayon = pixmap().size().height();
+
+    float posX = rayon * qCos(angle * M_PI / 180) + scene()->width() / 2 - 13;
+    float posY = rayon * qSin(angle * M_PI / 180)+ scene()->height() - pixmap().size().height() * 2 - 25;
+
+    balle->start(posX, posY, angle);
     scene()->addItem(balle);
 }
 
