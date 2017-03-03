@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "elysee.h"
+#include "bullet.h"
+
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 
@@ -22,6 +24,10 @@ Game::Game(QWidget *parent)
     Elysee *elysee = new Elysee();
     elysee->setPos(0,480);
     scene->addItem(elysee);
+
+    Bullet *balle = new Bullet();
+    balle->start(210,590,15);
+    scene->addItem(balle);
 
     show();
 }
