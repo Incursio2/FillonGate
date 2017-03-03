@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 #include "canon.h"
 #include "bullet.h"
 
@@ -5,7 +6,6 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QPointF>
-#include <QGraphicsScene>
 #include <QTimer>
 #include <QtMath>
 #include <QTime>

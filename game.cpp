@@ -1,14 +1,16 @@
 #include "Game.h"
 #include "elysee.h"
+#include "ennemy.h"
 #include "canon.h"
-
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
+#include <QTimer>
+#include <QDebug>
 
 Game::Game(QWidget *parent)
 {
 
-    QGraphicsScene *scene = new QGraphicsScene(0, 0, 450, 700);
+    scene = new QGraphicsScene(0, 0, 450, 700);
     setBackgroundBrush(QBrush(QImage(":/sprites/sprites/ciel.jpg")));
     setScene(scene);
 
@@ -31,6 +33,23 @@ Game::Game(QWidget *parent)
     canon->SetPosition();
 
     show();
+
+    Ennemy *ennemy = new Ennemy();
+    ennemy->setPos(30,50);
+    scene->addItem(ennemy);
+
+    m_timer = new QTimer();
+
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(addEnnemy()));
+    m_timer->start(1452);
+
+}
+
+void Game::addEnnemy()
+{
+    Ennemy *ennemy = new Ennemy();
+    scene->addItem(ennemy);
+    ennemy->setEnnemy();
 }
 
 

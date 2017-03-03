@@ -24,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp \
+    ennemy.cpp \
     game.cpp \
     elysee.cpp \
     bullet.cpp \
@@ -33,8 +34,8 @@ HEADERS  += \
     canon.h \
     game.h \
     elysee.h \
+    ennemy.h \
     bullet.h
 
 RESOURCES += \
     sprites.qrc
-
