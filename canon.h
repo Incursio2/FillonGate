@@ -4,12 +4,12 @@
 class QGraphicsSceneMouseEvent;
 class QPointF;
 
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 
-class Canon : public QGraphicsRectItem
+class Canon : public QGraphicsPixmapItem
 {
     public:
-        Canon();
+        Canon(int sceneWidth, int sceneHeight);
         ~Canon();
 
         QPointF *m_canonOriginPoint;
