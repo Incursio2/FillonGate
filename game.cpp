@@ -48,8 +48,6 @@ Game::Game(QWidget *parent)
 void Game::addEnnemy()
 {
     Ennemy *ennemy = new Ennemy();
-    qDebug() << "testitude" << endl;
     scene->addItem(ennemy);
     ennemy->setEnnemy();
-    qDebug() << "222" << endl;
 }

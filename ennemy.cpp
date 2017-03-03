@@ -9,9 +9,6 @@
 
 Ennemy::Ennemy(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
-  //  setPixmap(QPixmap(":/sprites/sprites/juppe.png"));
-//    m_sceneHeight = _sceneHeight;
-//    m_sceneWidth = _sceneWidth;
     init();
 }
 void Ennemy::init()
@@ -45,7 +42,6 @@ void Ennemy::move()
         return;
     }
     setPos(this->pos().x(),this->pos().y() + m_speed);
-    qDebug() << "pos";
 }
 
 Ennemy::~Ennemy()
