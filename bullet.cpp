@@ -13,11 +13,11 @@ Bullet::Bullet(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 //    timer->start(50);
 }
 
-void Bullet::handle(){
+/*void Bullet::handle(){
 //    QObject::connect(timer,&QPushButton::clicked,this,&Chrono::startChrono);
 }
 
 void Bullet::move(){
 
-}
+}*/
 

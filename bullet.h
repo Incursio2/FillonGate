@@ -12,7 +12,7 @@ class Bullet: public QObject,public QGraphicsPixmapItem
         Bullet(QGraphicsItem * parent=0);
 
     private:
-        QTimer timer;
+        //QTimer timer;
         void fire();
 };
 
