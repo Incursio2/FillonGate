@@ -1,23 +1,34 @@
 #include <QApplication>
-#include <QGraphicsScene>
-#include <QGraphicsRectItem>
-#include <QGraphicsView>
+#include "Game.h"
+
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    QGraphicsScene *scene = new QGraphicsScene();
 
-    QGraphicsRectItem *canon = new QGraphicsRectItem();
-    canon->setRect(0, 0, 100, 100);
+//    QGraphicsRectItem *canon = new QGraphicsRectItem();
+//    canon->setRect(0, 0, 100, 100);
+//    scene->addItem(canon);
 
-    scene->addItem(canon);
 
-    QGraphicsView *view = new QGraphicsView();
-    view->setFixedSize(800, 600);
-    view->setScene(scene);
+//    QGraphicsRectItem *elysee = new QGraphicsRectItem();
+//    elysee->setRect(0, 0, 450, 200);
+//    elysee->setPos(0,200);
+////    QPixmap *elysee_pixel = new QPixmap(":/sprites/elysee.png");
+//    scene->addItem(elysee);
 
-    view->show();
+
+//    QGraphicsView *view = new QGraphicsView();
+//    view->setFixedSize(455, 705);
+//    view->setScene(scene);
+
+//    view->show();
+
+    Game *game = new Game();
+    game->show();
+
     return a.exec();
 }
+
+
