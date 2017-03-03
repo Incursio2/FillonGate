@@ -5,5 +5,6 @@
         <file>sprites/elysee.png</file>
         <file>sprites/fillon.png</file>
         <file>sprites/juppe.png</file>
+        <file>sprites/balle.png</file>
     </qresource>
 </RCC>

@@ -25,11 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     game.cpp \
-    elysee.cpp
+    elysee.cpp \
+    bullet.cpp
 
 HEADERS  += \
     game.h \
-    elysee.h
+    elysee.h \
+    bullet.h
 
 RESOURCES += \
     sprites.qrc
