@@ -35,7 +35,7 @@ void Bullet::move(){
     float degree = radian * 180 / M_PI;
 
 //    setTransformOriginPoint(QPoint(pos().x(),pos().y()));
-    qDebug() << "Degre" << degree;
+//    qDebug() << "Degre" << degree;
     setRotation(degree-90);
     setPos(posX,posY-vitesse);
 
