@@ -16,6 +16,8 @@ class Canon : public QObject, public QGraphicsPixmapItem
         Canon(QGraphicsItem * parent = 0);
         ~Canon();
 
+        void SetPosition();
+
     public slots:
         void mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent);
         void mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent);

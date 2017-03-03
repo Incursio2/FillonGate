@@ -12,6 +12,12 @@ Game::Game(QWidget *parent)
     setBackgroundBrush(QBrush(QImage(":/sprites/sprites/ciel.jpg")));
     setScene(scene);
 
+    QGraphicsTextItem *score = new QGraphicsTextItem();
+    score->setPlainText("Score : ");
+    score->setPos(10, 10);
+
+    scene->addItem(score);
+
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(450,700);
@@ -22,6 +28,7 @@ Game::Game(QWidget *parent)
 
     Canon *canon = new Canon();
     scene->addItem(canon);
+    canon->SetPosition();
 
     show();
 }
