@@ -32,3 +32,5 @@ Game::Game(QWidget *parent)
 
     show();
 }
+
+

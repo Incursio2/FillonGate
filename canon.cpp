@@ -46,7 +46,6 @@ void Canon::Fire()
     Bullet *balle = new Bullet();
     qsrand(QTime::currentTime().msec());
     int angle = rand() % 150 + 15; // Entre 15 et 149
-    qDebug() << "Angle" << angle;
     balle->start(210,590,angle);
     scene()->addItem(balle);
 }
