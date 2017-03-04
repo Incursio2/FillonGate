@@ -8,4 +8,7 @@
         <file>sprites/balle.png</file>
         <file>sprites/ciel_rouge.jpg</file>
     </qresource>
+    <qresource prefix="/styles">
+        <file>style.qss</file>
+    </qresource>
 </RCC>

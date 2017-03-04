@@ -5,18 +5,29 @@
 #include <QGraphicsRectItem>
 #include <QTimer>
 #include <QList>
+#include <QFile>
 
 #include <QDebug>
 
 Game::Game(QWidget *parent)
 {
+    QFile file(":/styles/style.qss");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(file.readAll());
+    file.close();
+    setStyleSheet(styleSheet);
+
 
     scene = new QGraphicsScene(0, 0, 450, 700);
     setBackgroundBrush(QBrush(QImage(":/sprites/sprites/ciel.jpg")));
     setScene(scene);
 
     txt_score = new QGraphicsTextItem();
-    txt_score->setPlainText("Score : ");
+    txt_score->setPlainText("Score : 0");
+    txt_score->setScale(3);
+    txt_score->setDefaultTextColor(QColor(255,255,255));
+
+    txt_score->setObjectName("score");
     txt_score->setPos(10, 10);
     score = 0;
 

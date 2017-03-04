@@ -18,7 +18,7 @@ Canon::Canon(QGraphicsItem *parent) : QObject(), QGraphicsPixmapItem(parent)
    setPixmap(QPixmap(":/sprites/sprites/canon.png"));
    m_canonOriginPoint = new QPointF(pixmap().size().width() / 2, pixmap().size().height());
    m_timer = new QTimer(this);
-   m_timer->start(800);
+   m_timer->start(500);
    Canon::Handle();
 }
 
